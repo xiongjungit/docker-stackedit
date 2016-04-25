@@ -22,17 +22,17 @@ RUN \
 #安装nvm并设置node源为七牛源
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash && \
     echo 'source ~/.nvm/nvm.sh' >> ~/.bashrc && \
-	echo 'source ~/.nvm/nvm.sh' >> ~/.profile  && \
-	echo 'export NVM_NODEJS_ORG_MIRROR=http://dist.u.qiniudn.com' >> ~/.bashrc && \
-	source ~/.nvm/nvm.sh && \
-	source ~/.bashrc && \
-	source ~/.profile
+    /bin/bash -c "source ~/.nvm/nvm.sh" && \
+    echo 'source ~/.nvm/nvm.sh' >> ~/.profile  && \
+    echo 'export NVM_NODEJS_ORG_MIRROR=http://dist.u.qiniudn.com' >> ~/.bashrc && \
+    /bin/bash -c "source ~/.bashrc" && \
+    /bin/bash -c "source ~/.profile"
 	
 
 #安装nodejs
 
-RUN nvm install iojs-v3.3.1 && \
-    nvm alias default iojs-v3.3.1
+RUN /bin/bash --login -c "nvm install iojs-v3.3.1" && \
+    /bin/bash --login -c "nvm alias default iojs-v3.3.1"
 	
 #安装stackedit
 
@@ -40,11 +40,11 @@ RUN wget -O /tmp/master.zip https://github.com/benweet/stackedit/archive/master.
     unzip /tmp/master.zip -d /
 
 WORKDIR  /stackedit-master
-RUN npm install -g bower && \
-    npm install -g gulp && \
-    npm install && \
-    bower install --save --allow-root && \
-    gulp
+RUN /bin/bash --login -c "npm install -g bower" && \
+    /bin/bash --login -c "npm install -g gulp" && \
+    /bin/bash --login -c "npm install" && \
+    /bin/bash --login -c "bower install --save --allow-root" && \
+    /bin/bash --login -c "gulp"
 
 #暴露端口
 EXPOSE 3000
