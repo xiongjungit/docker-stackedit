@@ -34,20 +34,31 @@ RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh
 RUN /bin/bash --login -c "nvm install iojs-v3.3.1" && \
     /bin/bash --login -c "nvm alias default iojs-v3.3.1"
 	
+#定义node环境变量
+
+ENV PATH $PATH:/root/.nvm/versions/io.js/v3.3.1/bin
+
 #安装stackedit
 
 RUN wget -O /tmp/master.zip https://github.com/benweet/stackedit/archive/master.zip && \
     unzip /tmp/master.zip -d /
 
+#定义工作目录
 WORKDIR  /stackedit-master
+
 RUN /bin/bash --login -c "npm install -g bower" && \
     /bin/bash --login -c "npm install -g gulp" && \
     /bin/bash --login -c "npm install" && \
-    /bin/bash --login -c "bower install --save --allow-root" && \
-    /bin/bash --login -c "gulp"
+    /bin/bash --login -c "bower install --save --allow-root"
 
 #暴露端口
 EXPOSE 3000
 
+#添加启动脚本
+
+ADD run.sh /run.sh
+RUN chmod +x /*.sh
+
 #定义默认启动命令
-CMD ["export PORT=3000 && node server.js"]
+CMD ["/run.sh"]
+
