@@ -1,3 +1,4 @@
 #!/bin/bash
 cd /stackedit-master
-node server.js
+#bash -i -c 'npm start'
+bash -i -c 'node .'
