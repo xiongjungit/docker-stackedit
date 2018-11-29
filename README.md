@@ -5,13 +5,15 @@ StackEdit是一个开放源码免费使用的 MarkDown 编辑器, 基于 [PageDo
 
 展示页面: https://stackedit.io/.
 
-#一、介绍
+# 一、介绍
 
-##简介
+## 简介
+
+![](https://stackedit.io/static/landing/logo.svg)
 
 这款在线markdown编辑器，是一款很赞的应用。如果你是markdown的用户，那么你要试一下这款应用；如果你是chrome用户，那么你更要安装这款应用。我是把它作为chrome的一个插件应用来使用的。下面来看一下这款应用的特点及使用技巧。
 
-##功能
+## 功能
 
 - 管理多个 MarkDown 文档，可在线或离线编辑
 - 通过模板导出 MarkDown 或 HTML 格式文件
@@ -24,7 +26,7 @@ StackEdit是一个开放源码免费使用的 MarkDown 编辑器, 基于 [PageDo
 - 转换HTML到 MarkDown
 - 以GIst发布后支持分享（可以在线使用[StackEdit](http://benweet.github.io/stackedit/)阅读）
 
-##支持
+## 支持
 
 - 实时编辑、HTML预览并自动滚动定位到编辑处
 - Markdown Extra 支持 Prettify/Highlight.js 的语法高亮
@@ -37,21 +39,15 @@ StackEdit是一个开放源码免费使用的 MarkDown 编辑器, 基于 [PageDo
 - Google Drive和Dropbox在线同步
 - 一键发布支持 Blogger，Dropbox，GIST，GitHub，Google Drive，SSH server，Tumblr，WordPress
 
-##真面目
+# 二、使用技巧
 
-![](http://www.xuanfengge.com/wp-content/uploads/2013/11/sdf-300x108.jpg)
-
- 
-
-#二、使用技巧
-
-##安装
+## 安装
 
 作为chrome应用，就需要有这个浏览器。然后编辑右上角菜单->工具->扩展程序->获取更多扩展程序->输入StackEdit搜索安装即可。
 
 或者可以直接访问网站：https://stackedit.io/
 
-##备份及教程
+## 备份及教程
 
 因为是在线编辑器，没有实时保存文件，可能会遇到各种状况导致文档缺失。所以就需要备份，这边我推荐用“Export to Google Drive”做备份，也就是谷歌硬盘。文档的数据，使用localstorage存储的，所以切忌在清除浏览器应用数据之前要备份编写的文档，不然会全部不见。
 
@@ -67,11 +63,11 @@ StackEdit是一个开放源码免费使用的 MarkDown 编辑器, 基于 [PageDo
 
 注意：您可以移动或重命名文件之后谷歌驱动器内。实时协作文档无法打开外StackEdit。实时协作文档不能有多个同步的位置。
 
-##MD语法教程
+## MD语法教程
 
 刚安装应用的时候，会有welcome document文档，里面就是介绍了这个语法，如果突然不记得怎么写了。可以通过这个方法找到welcome document：左上角菜单->settings->Utils->welcome document。或者简易版教程在右上角的问号图标那Markdown Syntax。
 
-##其他技巧
+## 其他技巧
 
 如果觉得该编辑器有什么需要改进的地方，欢迎去github上的项目提出，我之前提出的一些体验上的操作，包括无序列表后回车还是无序列表，双次回车后取消的建议已实现。他们还是很热情的，一群热爱开发的外国盆友~
 

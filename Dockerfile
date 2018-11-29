@@ -1,6 +1,7 @@
 #拉取基础镜像
 
-FROM       daocloud.io/library/ubuntu:latest
+#FROM       harbor.mxnet.io/library/ubuntu:14.04
+FROM       daocloud.io/library/ubuntu:14.04 
 MAINTAINER xiongjun,dockerxman <fenyunxx@163.com>
 
 #设置环境变量
@@ -19,43 +20,38 @@ RUN \
   apt-get install -y byobu curl git htop unzip vim wget && \
   rm -rf /var/lib/apt/lists/*
 
-#安装nvm并设置node源为七牛源
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash && \
+#安装nvm并设置node源为阿里云源
+RUN git clone https://github.com/creationix/nvm.git ~/.nvm && \
+    cd ~/.nvm && \
+    git checkout `git describe --abbrev=0 --tags` && \
     echo 'source ~/.nvm/nvm.sh' >> ~/.bashrc && \
-    /bin/bash -c "source ~/.nvm/nvm.sh" && \
-    echo 'source ~/.nvm/nvm.sh' >> ~/.profile  && \
-    echo 'export NVM_NODEJS_ORG_MIRROR=http://dist.u.qiniudn.com' >> ~/.bashrc && \
+    echo 'export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node' >> ~/.bashrc && \
     /bin/bash -c "source ~/.bashrc" && \
-    /bin/bash -c "source ~/.profile"
+    /bin/bash -c "source ~/.profile"	
+
+#安装nodejs v10.14.0
+RUN /bin/bash --login -c "nvm install v10.14.0" && \
+    /bin/bash --login -c "nvm alias default v10.14.0"
 	
-
-#安装nodejs
-
-RUN /bin/bash --login -c "nvm install iojs-v3.3.1" && \
-    /bin/bash --login -c "nvm alias default iojs-v3.3.1"
-	
-#定义node环境变量
-
-ENV PATH $PATH:/root/.nvm/versions/io.js/v3.3.1/bin
-
-#安装stackedit
-
+#下载stackedit
 RUN wget -O /tmp/master.zip https://github.com/benweet/stackedit/archive/master.zip && \
     unzip /tmp/master.zip -d /
 
-#定义工作目录
+#定义stackedit工作目录
 WORKDIR  /stackedit-master
 
-RUN /bin/bash --login -c "npm install -g bower" && \
-    /bin/bash --login -c "npm install -g gulp" && \
-    /bin/bash --login -c "npm install" && \
-    /bin/bash --login -c "bower install --save --allow-root"
+#安装cnpm
+RUN /bin/bash --login -c "npm install -g cnpm --registry=https://registry.npm.taobao.org"
+
+#安装stackedit
+RUN /bin/bash --login -c "cnpm install -g bower" && \
+    /bin/bash --login -c "cnpm install -g gulp" && \
+    /bin/bash --login -c "npm install"
 
 #暴露端口
-EXPOSE 3000
+EXPOSE 8080
 
 #添加启动脚本
-
 ADD run.sh /run.sh
 RUN chmod +x /*.sh
 
