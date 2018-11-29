@@ -27,7 +27,7 @@ RUN git clone https://github.com/creationix/nvm.git ~/.nvm && \
     echo 'source ~/.nvm/nvm.sh' >> ~/.bashrc && \
     echo 'export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node' >> ~/.bashrc && \
     /bin/bash -c "source ~/.bashrc" && \
-    /bin/bash -c "source ~/.profile"	
+    /bin/bash -c "source ~/.bash_profile"	
 
 #安装nodejs v10.14.0
 RUN /bin/bash --login -c "nvm install v10.14.0" && \
