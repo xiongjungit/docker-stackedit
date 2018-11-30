@@ -1,7 +1,7 @@
 StackEdit
 =========
 
-StackEdit是一个开放源码免费使用的 MarkDown 编辑器, 基于 [PageDown](http://www.oschina.net/p/pagedown)，使用了 Stack Overflow 和其他 Stack Exchange 网站的 MarkDown 库，stackoverflow出品。
+[StackEdit](https://github.com/benweet/stackedit)是一个开放源码免费使用的 MarkDown 编辑器, 基于 [PageDown](http://www.oschina.net/p/pagedown)，使用了 Stack Overflow 和其他 Stack Exchange 网站的 MarkDown 库，stackoverflow出品。
 
 展示页面: https://stackedit.io/.
 
